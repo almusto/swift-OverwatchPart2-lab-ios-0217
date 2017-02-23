@@ -64,24 +64,33 @@ class SelectionViewController: UIViewController, UIScrollViewDelegate {
   }
 
   func updateStackViewWithHeros() {
+    let zero = CGPoint(x: 0, y: 0)
 
     switch segButton.selectedSegmentIndex {
     case 0:
+      heroNameLabel.text = "Genji"
+      heroScrollView.setContentOffset(zero, animated: false)
       for view in characterStackView.arrangedSubviews {
         view.removeFromSuperview()
       }
       heros =  game.offensiveCharacters
     case 1:
+      heroNameLabel.text = "Bastion"
+      heroScrollView.setContentOffset(zero, animated: false)
       for view in characterStackView.arrangedSubviews {
         view.removeFromSuperview()
       }
       heros =  game.defensiveCharacters
     case 3:
+      heroNameLabel.text = "Ana"
+      heroScrollView.setContentOffset(zero, animated: false)
       for view in characterStackView.arrangedSubviews {
         view.removeFromSuperview()
       }
       heros =  game.supportCharacters
     case 2:
+      heroNameLabel.text = "Dva"
+      heroScrollView.setContentOffset(zero, animated: false)
       for view in characterStackView.arrangedSubviews {
         view.removeFromSuperview()
       }
@@ -110,7 +119,12 @@ class SelectionViewController: UIViewController, UIScrollViewDelegate {
 
   func updateNameLabel() {
     let placeInScrollView = Int(heroScrollView.contentOffset.x / heroScrollView.frame.size.width)
-    let hero = heros[placeInScrollView]
+    let hero: Hero
+    if placeInScrollView > heros.count - 1 {
+      hero = heros[heros.count - 1]
+    } else {
+      hero = heros[placeInScrollView]
+    }
     heroNameLabel.text = hero.name.description
   }
 
