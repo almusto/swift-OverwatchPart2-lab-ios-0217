@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,15 +22,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQj-CN-k1a">
-                                <rect key="frame" x="102" y="73" width="170" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaN-M7-f3x" userLabel="ContainerView">
+                                <rect key="frame" x="16" y="111" width="343" height="451"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scU-fP-33I">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="451"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oJ8-eF-hfN">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="451"/>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="oJ8-eF-hfN" secondAttribute="bottom" id="C9b-L1-UFB"/>
+                                            <constraint firstItem="oJ8-eF-hfN" firstAttribute="top" secondItem="scU-fP-33I" secondAttribute="top" id="K8E-5w-P4j"/>
+                                            <constraint firstAttribute="trailing" secondItem="oJ8-eF-hfN" secondAttribute="trailing" id="Pes-Dn-fQY"/>
+                                            <constraint firstItem="oJ8-eF-hfN" firstAttribute="height" secondItem="scU-fP-33I" secondAttribute="height" id="Srn-jK-xLm"/>
+                                            <constraint firstItem="oJ8-eF-hfN" firstAttribute="leading" secondItem="scU-fP-33I" secondAttribute="leading" id="e2m-QB-6BW"/>
+                                            <constraint firstItem="oJ8-eF-hfN" firstAttribute="width" secondItem="scU-fP-33I" secondAttribute="width" id="wex-dW-u2A"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="scU-fP-33I" firstAttribute="top" secondItem="RaN-M7-f3x" secondAttribute="top" id="JgR-HY-ZYo"/>
+                                    <constraint firstAttribute="trailing" secondItem="scU-fP-33I" secondAttribute="trailing" id="PvM-Cd-h1r"/>
+                                    <constraint firstAttribute="bottom" secondItem="scU-fP-33I" secondAttribute="bottom" id="ZLg-po-jY3"/>
+                                    <constraint firstItem="scU-fP-33I" firstAttribute="leading" secondItem="RaN-M7-f3x" secondAttribute="leading" id="ZiR-sg-WAg"/>
+                                </constraints>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HA0-JY-6DD">
-                                <rect key="frame" x="16" y="619" width="343" height="29"/>
+                                <rect key="frame" x="58" y="619" width="259" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Offense"/>
@@ -37,25 +59,34 @@
                                     <segment title="Tank"/>
                                     <segment title="Support"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeInHeroType:" destination="ObM-Ms-ZVN" eventType="valueChanged" id="RnG-QG-bU8"/>
+                                </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RaN-M7-f3x" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="252" width="375" height="359"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="scU-fP-33I">
-                                        <rect key="frame" x="0.0" y="-10" width="375" height="377"/>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="scU-fP-33I" firstAttribute="leading" secondItem="RaN-M7-f3x" secondAttribute="leading" id="Sc9-VF-NC6"/>
-                                    <constraint firstAttribute="bottom" secondItem="scU-fP-33I" secondAttribute="bottom" id="aMM-XU-4at"/>
-                                    <constraint firstItem="scU-fP-33I" firstAttribute="top" secondItem="RaN-M7-f3x" secondAttribute="top" id="nNf-bV-Cza"/>
-                                    <constraint firstAttribute="trailing" secondItem="scU-fP-33I" secondAttribute="trailing" id="ueH-Rh-iGH"/>
-                                </constraints>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQj-CN-k1a">
+                                <rect key="frame" x="90" y="28" width="194" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RaN-M7-f3x" firstAttribute="top" secondItem="NoI-FK-e0n" secondAttribute="bottom" constant="90.5" id="GpW-yZ-hv9"/>
+                            <constraint firstItem="RaN-M7-f3x" firstAttribute="leading" secondItem="s1c-Xw-1JN" secondAttribute="leadingMargin" id="Nws-2e-g5Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RaN-M7-f3x" secondAttribute="trailing" id="eTN-xX-drT"/>
+                            <constraint firstItem="1fI-gZ-uEM" firstAttribute="top" secondItem="RaN-M7-f3x" secondAttribute="bottom" constant="105.5" id="yv6-Uy-vX0"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="characterStackView" destination="oJ8-eF-hfN" id="jrY-gP-vt4"/>
+                        <outlet property="characterStackViewWidthConstraint" destination="wex-dW-u2A" id="qjC-Si-DnF"/>
+                        <outlet property="containerView" destination="RaN-M7-f3x" id="reG-hp-j78"/>
+                        <outlet property="heroNameLabel" destination="sQj-CN-k1a" id="yJv-jr-gp2"/>
+                        <outlet property="heroScrollView" destination="scU-fP-33I" id="NE7-qz-TGf"/>
+                        <outlet property="segButton" destination="HA0-JY-6DD" id="jto-aa-7ud"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0m-aD-xS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
